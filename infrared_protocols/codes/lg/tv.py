@@ -8,11 +8,14 @@ from ...commands import Command, NECCommand
 class LGTVCode(IntEnum):
     """LG TV IR command codes."""
 
+    ASPECT = 0x79
     BACK = 0x28
+    BLUE = 0x72
     CHANNEL_DOWN = 0x01
     CHANNEL_UP = 0x00
     EXIT = 0x5B
     FAST_FORWARD = 0x8E
+    GREEN = 0x63
     GUIDE = 0xA9
     HDMI_1 = 0xCE
     HDMI_2 = 0xCC
@@ -21,6 +24,7 @@ class LGTVCode(IntEnum):
     HOME = 0x7C
     INFO = 0xAA
     INPUT = 0x0B
+    LIST = 0xCA
     MENU = 0x43
     MUTE = 0x09
     NAV_DOWN = 0x41
@@ -43,10 +47,14 @@ class LGTVCode(IntEnum):
     POWER = 0x08
     POWER_ON = 0xC4
     POWER_OFF = 0xC5
+    RED = 0x71
     REWIND = 0x8F
+    SETTINGS = 0x45
     STOP = 0xB1
+    SUBTITLE = 0x39
     VOLUME_DOWN = 0x03
     VOLUME_UP = 0x02
+    YELLOW = 0x61
 
 
 def make_command(code: LGTVCode, repeat_count: int = 0) -> Command:
