@@ -56,12 +56,19 @@ class LGTVCode(IntEnum):
     VOLUME_UP = 0x02
     YELLOW = 0x61
 
+    def to_command(self, repeat_count: int = 0) -> Command:
+        """Build an NEC command for this LG TV code."""
+        return NECCommand(
+            address=0xFB04,
+            command=self.value,
+            modulation=38000,
+            repeat_count=repeat_count,
+        )
 
-def make_command(code: LGTVCode, repeat_count: int = 0) -> Command:
-    """Get the NECCommand for an LG TV IR code."""
-    return NECCommand(
-        address=0xFB04, command=code, modulation=38000, repeat_count=repeat_count
-    )
+
+def make_command(code: Enum, repeat_count: int = 0) -> Command:
+    """Build an NEC command for an LG TV IR code."""
+    return code.to_command(repeat_count)
 
 class LGTVCodeJP(Enum):
     """LG TV IR command codes."""
@@ -153,20 +160,22 @@ class LGTVCodeJP(Enum):
     STOP = (0xFB04, 0xB1)
     SUBTITLE = (0xFB04, 0x39)
     THREEDIGIT = (0xFB04, 0x32)
-    TUNER_BS = (0xFB04, 0x5C)
-    TUNER_CS = (0xFB04, 0x5D)
-    TUNER_DTV = (0xFB04, 0x5E)
-    TUNER_TV = (0xFB04, 0x5F)
-    TUNER_4K = (0xFB04, 0x7B)
+    BS = (0xFB04, 0x5C)
+    CS = (0xFB04, 0x5D)
+    DTV = (0xFB04, 0x5E)
+    TV = (0xFB04, 0x5F)
+    BS4K = (0xFB04, 0x7B)
     VOLUME_DOWN = (0xFB04, 0x03)
     VOLUME_UP = (0xFB04, 0x02)
     YELLOW = (0xFB04, 0x61)
 
-
-def make_command_jp(code: LGTVCodeJP, repeat_count: int = 0) -> Command:
-    """Get the NECCommand for an LG TV IR code."""
-    addr, cmd = code.value
-    return NECCommand(
-        address=addr, command=cmd, modulation=38000, repeat_count=repeat_count
-    )
+    def to_command(self, repeat_count: int = 0) -> Command:
+        """Build an NEC command for this LG TV code."""
+        address, command = self.value
+        return NECCommand(
+            address=address,
+            command=command,
+            modulation=38000,
+            repeat_count=repeat_count,
+        )
 
