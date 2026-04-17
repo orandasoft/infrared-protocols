@@ -63,7 +63,6 @@ class LGTVCode(IntEnum):
         return NECCommand(
             address=0xFB04,
             command=self.value,
-            modulation=38000,
             repeat_count=repeat_count,
         )
 
@@ -139,7 +138,6 @@ class LGTVCodeJP(Enum):
     NAV_LEFT = (0xFB04, 0x07)
     NAV_RIGHT = (0xFB04, 0x06)
     NAV_UP = (0xFB04, 0x04)
-    NUM_0 = (0xFB04, 0x10)
     NUM_1 = (0xFB04, 0x11)
     NUM_2 = (0xFB04, 0x12)
     NUM_3 = (0xFB04, 0x13)
@@ -178,7 +176,6 @@ class LGTVCodeJP(Enum):
         return NECCommand(
             address=address,
             command=command,
-            modulation=38000,
             repeat_count=repeat_count,
         )
 
