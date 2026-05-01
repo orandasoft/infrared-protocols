@@ -6,7 +6,7 @@ from ...commands import Command, NECCommand
 
 
 class LGTVCode(IntEnum):
-    """Japan-specific LG TV IR command codes as `(address, command)` pairs."""
+    """"LG TV IR command codes."""
 
     ASPECT = 0x79
     BACK = 0x28
@@ -68,7 +68,7 @@ class LGTVCode(IntEnum):
 
 
 class LGTVCodeJP(Enum):
-    """LG TV IR command codes."""
+    """Japan-specific LG TV IR command codes as `(address, command)` pairs."""
 
     AMAZON = (0xFE04, 0x5C)
     ASPECT = (0xFB04, 0x79)
@@ -203,6 +203,6 @@ class LGTVCodeJP(Enum):
         )
 
 
-def make_command(code: LGTVCode | LGTVCodeJP, repeat_count: int = 0) -> Command:
+def make_command(code: LGTVCode, repeat_count: int = 0) -> Command:
     """Build an NEC command for an LG TV IR code."""
     return code.to_command(repeat_count)
