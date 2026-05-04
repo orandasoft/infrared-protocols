@@ -6,7 +6,7 @@ from ...commands import Command, NECCommand
 
 
 class LGTVCode(IntEnum):
-    """"LG TV IR command codes."""
+    """LG TV IR command codes."""
 
     ASPECT = 0x79
     BACK = 0x28
